@@ -1,7 +1,7 @@
 const Employee = require("../lib/intern")
 
 describe("Intern Tests", () => {
-    it("Should return an instance of class Engineer", () => {
+    it("Should return an instance of class Intern", () => {
         const testInst = new Employee();
         expect(typeof(testInst)).toBe("object");
     });
