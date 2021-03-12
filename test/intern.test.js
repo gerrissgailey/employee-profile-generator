@@ -24,12 +24,12 @@ describe("Intern Tests", () => {
     });
     it("Has a value for school name", () => {
         const testParam = "TestiferSchool";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "Intern", testParam);
         expect(testInst.school).toBe(testParam);
     });
     it("getRole returns 'Intern'", () => {
         const testParam = "Intern";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "TestiferSchool");
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
         expect(testInst.getRole()).toBe(testParam);
     });
     it("getName returns value for name", () => {
@@ -49,7 +49,7 @@ describe("Intern Tests", () => {
     });
     it("getSchool returns value for school name", () => {
         const testParam = "TestiferSchool";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "Intern", testParam);
         expect(testInst.getSchool()).toBe(testParam);
     });
     

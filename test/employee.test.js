@@ -24,7 +24,7 @@ describe("Employee Tests", () => {
     });
     it("getRole returns 'Employee'", () => {
         const testParam = "Employee";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com");
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
         expect(testInst.getRole()).toBe(testParam);
     });
     it("getName returns value for name", () => {

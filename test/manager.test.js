@@ -24,12 +24,12 @@ describe("Manager Tests", () => {
     });
     it("Has a value for office number", () => {
         const testParam = 456;
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "Manager", testParam);
         expect(testInst.officeNumber).toBe(testParam);
     });
     it("getRole returns 'Manager'", () => {
         const testParam = "Manager";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "TestiferSchool");
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
         expect(testInst.getRole()).toBe(testParam);
     });
     it("getName returns value for name", () => {
@@ -47,9 +47,9 @@ describe("Manager Tests", () => {
         const testInst = new Employee("Testifer", 123, testParam);
         expect(testInst.getEmail()).toBe(testParam);
     });
-    it("getSchool returns value for office number", () => {
+    it("getOfficeNumber returns value for office number", () => {
         const testParam = 456;
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "Manager", testParam);
         expect(testInst.getOfficeNumber()).toBe(testParam);
     });
     

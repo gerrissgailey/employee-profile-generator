@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-
+// HTML starter template
 function initialHTML(arr) {
     const html = `<!DOCTYPE html>
       <html lang="en">
@@ -14,7 +14,6 @@ function initialHTML(arr) {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
                 integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
                 crossorigin="anonymous" />
-            <link rel="stylesheet" href="./dist/style.css">
             <title>Team Profile</title>
         </head>
         <body>
@@ -28,7 +27,7 @@ function initialHTML(arr) {
             </div>
         </body>
         </html>`;
-
+    // Writes a new HTML file to the designated directory
     fs.writeFile("./dist/index.html", html, function(err) {
         if (err) {
             console.log(err);
@@ -38,6 +37,7 @@ function initialHTML(arr) {
     console.log("HTML Started / Generated!")
 }
 
+// Function to generate employee cards
 function generateCards(teamMembersArray) {
     let result = ""
     teamMembersArray.forEach(employee => {
@@ -58,47 +58,7 @@ function generateCards(teamMembersArray) {
     return result;
 } 
 
-
-
-// const addEmployee = (info, role) => {
-//     return new Promise(function(resolve, reject) {
-//     let newHtml = '';
-//     const name = info.getName();
-//     const id = info.getId();
-//     const email = info.getEmail();
-//     const theirRole = info.getRole();
-//     let additionalDetail;
-//     if (role === "Manager") {
-//         additionalDetail = info.getOfficeNumber();
-//     } else if (role === "Engineer") {
-//         additionalDetail = info.getGithub();
-//     } else if (role === "Intern") {
-//         additionalDetail = info.getSchool();
-//     } else {
-//         return;
-//     }
-//         // newHtml = `    
-//         //     <div class="col-sm-4">
-//         //         <div class="card" style="width: 18rem;">
-//         //             <div class="card-body">
-//         //                 <ul class="list-group list-group-flush">
-//         //                     <li class="list-group-item card-header">
-//         //                         <h4 class="card-title">${name}</h4>
-//         //                         <h5 class="card-text"><i class="fas fa-mug-hot"></i> ${theirRole}</h5>
-//         //                     </li>
-//         //                     <div class="card-body-wrapper">
-//         //                         <li class="list-group-item"><span>ID:</span> ${id}</li>
-//         //                         <li class="list-group-item"><span>Email:</span> <a href = "mailto:${email}">${email}</a></li>
-//         //                         <li class="list-group-item"><span>Office number:</span> ${additionalDetail}</li>
-//         //                     </div>
-//         //                 </ul>
-//         //             </div>
-//         //         </div>
-//         //     </div>
-//         //     `;
-//         //     return newHtml;
-//     });
-// };
+// Function / template for Manager card info
 const managerHtml = ({ name, id, email, role, officeNumber }) => {
         return `
             <div class="col-sm-4">
@@ -119,6 +79,7 @@ const managerHtml = ({ name, id, email, role, officeNumber }) => {
             `;
 };
 
+// Function / template for Engineer card info
 const engineerHtml = ({ name, id, email, role, github }) => {
         return `
             <div class="col-sm-4">
@@ -139,6 +100,7 @@ const engineerHtml = ({ name, id, email, role, github }) => {
             `;
 };
 
+// Function / template for Intern card info
 const internHtml = ({ name, id, email, role, school }) => {
         return `
             <div class="col-sm-4">
@@ -159,6 +121,7 @@ const internHtml = ({ name, id, email, role, school }) => {
             `;
 };
 
+// Function / template for Employee card info
 const employeeHtml = ({ name, id, email, role }) => {
         return `
             <div class="col-sm-4">
@@ -177,6 +140,5 @@ const employeeHtml = ({ name, id, email, role }) => {
             </div>
             `;
 };
-
 
 module.exports = { initialHTML }

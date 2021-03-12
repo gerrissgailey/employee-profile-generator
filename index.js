@@ -1,3 +1,4 @@
+// Global variables
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { initialHTML } = require("./src/page-template");
@@ -9,6 +10,7 @@ const Manager = require("./lib/manager");
 
 const team = [];
 
+// Runs the questions for employee information.
 function employeeQuestions() {
     inquirer
         .prompt([
@@ -59,6 +61,7 @@ function employeeQuestions() {
             }
         ])
         .then(teamMember => {
+            // If teamMember is a Manager, ask the following question
             if (teamMember.role === "Manager") {
                 inquirer
                     .prompt([
@@ -80,13 +83,10 @@ function employeeQuestions() {
                         console.log(answer.officeNumber)
                         const addManager = new Manager(teamMember.name, teamMember.id, teamMember.email, teamMember.role, answer.officeNumber);
                         team.push(addManager);
-                        initialHTML(team)
-
-                        // let role = "Manager";
-                        // addEmployee(addManager, role);
-
+                        initialHTML(team);
                         addAnother();
                     })
+            // If teamMember is an Engineer, ask the following question        
             } else if (teamMember.role === "Engineer") {
                 inquirer
                     .prompt([
@@ -111,6 +111,7 @@ function employeeQuestions() {
                         initialHTML(team);
                         addAnother();
                     })
+            // If teamMember is an Intern, ask the following question
             } else if (teamMember.role === "Intern") {
                 inquirer
                     .prompt([
@@ -135,7 +136,7 @@ function employeeQuestions() {
                         initialHTML(team);
                         addAnother();
                     })
-
+            // If teamMember is an Employee, no more info needed.
             } else {
                 const addEmployee = new Employee(teamMember.name, teamMember.id, teamMember.email, teamMember.role)
                 team.push(addEmployee);
@@ -143,7 +144,7 @@ function employeeQuestions() {
                 addAnother();
             }
             
-            // Build out function for adding another teammember
+            // Function to query if user would like to add another employee.
             function addAnother() {
                 inquirer
                     .prompt([

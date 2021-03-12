@@ -24,12 +24,12 @@ describe("Engineer Tests", () => {
     });
     it("Has a value for GitHub username", () => {
         const testParam = "TestiferUser";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "Engineer", testParam);
         expect(testInst.github).toBe(testParam);
     });
     it("getRole returns 'Engineer'", () => {
         const testParam = "Engineer";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "TestiferUser");
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
         expect(testInst.getRole()).toBe(testParam);
     });
     it("getName returns value for name", () => {
@@ -49,7 +49,7 @@ describe("Engineer Tests", () => {
     });
     it("getGithub returns value for GitHub", () => {
         const testParam = "TestiferUser";
-        const testInst = new Employee("Testifer", 123, "testifer@testing.com", testParam);
+        const testInst = new Employee("Testifer", 123, "testifer@testing.com", "Engineer", testParam);
         expect(testInst.getGithub()).toBe(testParam);
     });
     
