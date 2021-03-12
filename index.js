@@ -1,15 +1,18 @@
-const fs = require("fs");
-const path = require("path");
-
 const inquirer = require("inquirer");
+const fs = require("fs");
+const { initialHTML, addEmployee } = require("./src/page-template");
 
-//
 const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
 
+
 const team = [];
+
+
+
+
 
 
 function employeeQuestions() {
@@ -83,6 +86,11 @@ function employeeQuestions() {
                         console.log(answer.officeNumber)
                         const addManager = new Manager(teamMember.name, teamMember.id, teamMember.email, teamMember.role, answer.officeNumber);
                         team.push(addManager);
+                        initialHTML(team)
+
+                        let role = "Manager";
+                        addEmployee(addManager, role);
+
                         addAnother();
                     })
             } else if (teamMember.role === "Engineer") {
@@ -103,9 +111,10 @@ function employeeQuestions() {
                         },
                     ])
                     .then(answer => {
-                        console.log(answer.officeNumber)
+                        console.log(answer.github)
                         const addEngineer = new Engineer(teamMember.name, teamMember.id, teamMember.email, teamMember.role, answer.github);
                         team.push(addEngineer);
+                        initialHTML(team);
                         addAnother();
                     })
             } else if (teamMember.role === "Intern") {
@@ -129,12 +138,14 @@ function employeeQuestions() {
                         console.log(answer.school)
                         const addIntern = new Intern(teamMember.name, teamMember.id, teamMember.email, teamMember.role, answer.school);
                         team.push(addIntern);
+                        initialHTML(team);
                         addAnother();
                     })
 
             } else {
-                const addEmployee = new Employee(teamMember.name, teamMember.id, teamM.email, teamMember.role)
+                const addEmployee = new Employee(teamMember.name, teamMember.id, teamMember.email, teamMember.role)
                 team.push(addEmployee);
+                initialHTML(team);
                 addAnother();
             }
             
@@ -149,14 +160,16 @@ function employeeQuestions() {
                         }
                     ])
                     .then(add => {
-                        if (add.newEmployee === true) {
-                            employeeQuestions(team)
+                        if (add.newEmployee) {
+                            employeeQuestions()
                         } else {
-                            console.log("team", team);
-                            let createHtml = templatePage(team)
-                            writeToPage(createHtml)
+                            console.log("Your team is complete!")
+                            initialHTML(team);
                         }
                     })
-            }
-        })
-}
+                }
+            })
+        }
+        
+        // new TeamProfile().generateTeamProfilePage();
+employeeQuestions();
