@@ -1,19 +1,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const { initialHTML, addEmployee } = require("./src/page-template");
+const { initialHTML } = require("./src/page-template");
 
 const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
 
-
 const team = [];
-
-
-
-
-
 
 function employeeQuestions() {
     inquirer
@@ -61,7 +55,7 @@ function employeeQuestions() {
                 type: "list",
                 name: "role",
                 message: "Employee role?",
-                choices: ["Manager", "Engineer", "Employee", "Intern"]
+                choices: ["Manager", "Engineer", "Intern", "Employee"]
             }
         ])
         .then(teamMember => {
@@ -88,8 +82,8 @@ function employeeQuestions() {
                         team.push(addManager);
                         initialHTML(team)
 
-                        let role = "Manager";
-                        addEmployee(addManager, role);
+                        // let role = "Manager";
+                        // addEmployee(addManager, role);
 
                         addAnother();
                     })
@@ -170,6 +164,5 @@ function employeeQuestions() {
                 }
             })
         }
-        
-        // new TeamProfile().generateTeamProfilePage();
+
 employeeQuestions();
